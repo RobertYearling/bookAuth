@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The Author</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div class="">
+            <h2>{{ selectedAuthor.first_name }} {{ selectedAuthor.last_name }}</h2>
+            <p>ID: {{ selectedAuthor.id }}</p>
+            <p>Notes: {{ selectedAuthor.notes }}</p>
+            <p>Books</p>
+        </div>
+        <form action="submitBook" method="post">
+            {% csrf_token %}
+            {% for x in selectedBook %}
+            <option value="{{ x.title }}">
+                <p>{{ x.title }}</p>
+            </option>
+            {% endfor %}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Book</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div class="">
+            <h1>Book Information</h1>
+            <h2> {{ selectedBook.title }} </h2>
+            <p> ID: {{ selectedBook.id }} </p>
+            <p> Description: {{ selectedBook.desc }} </p>
+            <p> Author:</p>
+            <ul>
+                {% for authors in selectedBook.authors.all %}
+                <li>{{ authors.first_name }} {{ authors.last_name }}</li>
+                {% endfor %}
+            </ul>
+            <form action="/authUpdate/{{selectedBook.id}}" method="post">
+                {% csrf_token %}
+                <select name="chosenAuth" id="">
+                    {% for a in allAuthors %}
+                    <option value="{{ a.id }}">
+                        <p>{{ a.first_name }} {{ a.last_name }}</p>
+                    </option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Add Author">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

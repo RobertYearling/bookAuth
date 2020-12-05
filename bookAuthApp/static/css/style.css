@@ -1,0 +1,36 @@
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        margin: 0 auto;
+        width: 970px;
+    }
+
+    p {
+        padding: 10px;
+    }
+
+    #container {
+        background-color: lightgrey;
+        margin: 50px 0;
+        padding: 20px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    table {
+        border: 3px solid black;
+        padding: 6px;
+    }
+
+    th,
+    td {
+        padding: 3px 15px;
+        text-align: left;
+    }
